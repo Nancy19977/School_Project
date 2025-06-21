@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Generation School</title>
+    <meta name="description" content="  " />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="Header">New Generation School</div>
+    <div class="container">
+      <div class="sidebar">
+        <div class="profile">
+         <img src="profile_picture.png" alt="profile">
+         <h3> Nancy </h3>
+         <p> Nancy@gmail.com </p>
+        </div>    
+        <ul>
+         <li> 🏠 Home </li>
+         <li> 🧑‍🧒  Users </li>
+         <li> 📊 Grades </li>
+         <li> 📚 Subject </li>
+         <li> 📂 Subject Material </li>
+         <li> ❓ Question </li>
+         <li> 📝  Exam </li>
+         <li class="active"> 🗓️ Event </li>
+         <li> 📋 Attendance </li>
+         <li> 🎫 Ticketing support </li>
+        </ul>
+      </div>
+      <div class="main-content">
+  <h2>Add New Event</h2>
+  <form class="event-form">
+    <div class="form-group">
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" name="eventName" required />
+    </div>
+
+    <div class="form-group">
+      <label for="eventDate">Date:</label>
+      <input type="date" id="eventDate" name="eventDate" required />
+    </div>
+
+    <div class="form-group">
+      <label for="eventTime">Time:</label>
+      <input type="time" id="eventTime" name="eventTime" required />
+    </div>
+
+    <div class="form-group">
+      <label for="eventLocation">Location:</label>
+      <input type="text" id="eventLocation" name="eventLocation" required />
+    </div>
+
+    <div class="form-group">
+      <label for="eventDescription">Description:</label>
+      <textarea id="eventDescription" name="eventDescription" rows="3"></textarea>
+    </div>
+
+   <div class="form-buttons">
+  <button type="submit" class="btn btn-save">Save</button>
+  <button type="button" class="btn btn-cancel">Cancel</button>
+</div>
+
+
+  </form>
+</div>
+
+    
+    </div>
+      <script src="script.js"></script>
+  </body>
+</html>
