@@ -1,52 +1,35 @@
-const examData = [
+const studyMaterials = [
   {
-    subject: "Math",
-    date: "2025-07-01",
-    time: "10:00 AM",
-    room: "Room 101",
-   
+    title: "Math Chapter 1 - Algebra",
+    description: "PDF notes and exercises on Algebra fundamentals.",
+    link: "materials/math_chapter1.pdf"
   },
   {
-    subject: "Science",
-    date: "2025-07-03",
-    time: "12:00 PM",
-    room: "Room 203",
-   
+    title: "Science Video - Photosynthesis",
+    description: "Watch the detailed explanation of photosynthesis process.",
+    link: "materials/photosynthesis_video.mp4"
   },
   {
-    subject: "History",
-    date: "2025-07-05",
-    time: "09:00 AM",
-    room: "Room 105",
- 
+    title: "History Notes - Ancient Civilizations",
+    description: "Comprehensive notes on Ancient Egypt, Greece, and Rome.",
+    link: "materials/history_notes.pdf"
+  },
+  {
+    title: "English Grammar Exercises",
+    description: "Interactive exercises to improve your grammar skills.",
+    link: "materials/english_grammar_exercises.pdf"
   }
 ];
 
-const tbody = document.getElementById("examTableBody");
+const materialsContainer = document.getElementById("materialsList");
 
-examData.forEach(exam => {
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>${exam.subject}</td>
-    <td>${exam.date}</td>
-    <td>${exam.time}</td>
-    <td>${exam.room}</td>
-    
+studyMaterials.forEach(material => {
+  const card = document.createElement("div");
+  card.classList.add("material-card");
+  card.innerHTML = `
+    <div class="material-title">${material.title}</div>
+    <div class="material-desc">${material.description}</div>
+    <a class="material-link" href="${material.link}" target="_blank" rel="noopener noreferrer">View / Download</a>
   `;
-  tbody.appendChild(row);
-});
- 
-document.getElementById("guidelineBtn").addEventListener("click", () => {
-  document.getElementById("guidelineModal").style.display = "block";
-});
-
-document.querySelector(".close-btn").addEventListener("click", () => {
-  document.getElementById("guidelineModal").style.display = "none";
-});
-
-window.addEventListener("click", (event) => {
-  const modal = document.getElementById("guidelineModal");
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
+  materialsContainer.appendChild(card);
 });
