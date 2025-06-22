@@ -1,8 +1,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>New Generation School</title>
+    <title>Attendance</title>
     <meta name="description" content="  " />
+    <style></style>
+    <script></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -22,50 +24,50 @@
          <li> 📂 Subject Material </li>
          <li> ❓ Question </li>
          <li> 📝  Exam </li>
-         <li class="active"> 🗓️ Event </li>
-         <li> 📋 Attendance </li>
+         <li> 🗓️ Event </li>
+         <li class="active">📋 Attendance </li>
          <li> 🎫 Ticketing support </li>
         </ul>
       </div>
       <div class="main-content">
-  <h2>Add New Event</h2>
-  <form class="event-form">
-    <div class="form-group">
-      <label for="eventName">Event Name:</label>
-      <input type="text" id="eventName" name="eventName" required />
+        <section class="attendance-report">
+    <h2>Student Attendance Reports</h2>
+    <div class="filters">
+      <label for="classSelect">Class:</label>
+      <select id="classSelect">
+        <option value="all">All</option>
+        <option value="Grade 1 - A">Grade 1 - A</option>
+          <option value="Grade 2 - B">Grade 2 - B</option>
+          <option value="Grade 3 - C">Grade 3 - C</option>
+      </select>
+
+      <label for="dateSelect">Date:</label>
+      <input type="date" id="dateSelect">
+
+      <button id="filterBtn">Filter</button>
     </div>
 
-    <div class="form-group">
-      <label for="eventDate">Date:</label>
-      <input type="date" id="eventDate" name="eventDate" required />
+    <table id="attendanceTable">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Class</th>
+          <th>Teacher</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <button id="downloadBtn">Download Report as PDF</button>
+  </section>
+      </div>
+      
     </div>
-
-    <div class="form-group">
-      <label for="eventTime">Time:</label>
-      <input type="time" id="eventTime" name="eventTime" required />
-    </div>
-
-    <div class="form-group">
-      <label for="eventLocation">Location:</label>
-      <input type="text" id="eventLocation" name="eventLocation" required />
-    </div>
-
-    <div class="form-group">
-      <label for="eventDescription">Description:</label>
-      <textarea id="eventDescription" name="eventDescription" rows="3"></textarea>
-    </div>
-
-   <div class="form-buttons">
-  <button type="submit" class="btn btn-save">Save</button>
-  <button type="button" class="btn btn-cancel">Cancel</button>
-</div>
-
-
-  </form>
-</div>
-
-    
-    </div>
-      <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
   </body>
 </html>
