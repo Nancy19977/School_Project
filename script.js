@@ -1,105 +1,52 @@
-const studentData = {
-  "Grade 1 - A": ["Ali Ahmed", "Sara Mohamed", "Omar Youssef"],
-  "Grade 2 - B": ["Mona Hassan", "Youssef Adel", "Nour Samir"],
-  "Grade 3 - C": ["Hana Tamer", "Ziad Mostafa", "Laila Ashraf"]
-};
+const examData = [
+  {
+    subject: "Math",
+    date: "2025-07-01",
+    time: "10:00 AM",
+    room: "Room 101",
+   
+  },
+  {
+    subject: "Science",
+    date: "2025-07-03",
+    time: "12:00 PM",
+    room: "Room 203",
+   
+  },
+  {
+    subject: "History",
+    date: "2025-07-05",
+    time: "09:00 AM",
+    room: "Room 105",
+ 
+  }
+];
 
-document.addEventListener("DOMContentLoaded", function () {
-  const classSelect = document.getElementById("classSelect");
-  const dateInput = document.getElementById("dateInput");
+const tbody = document.getElementById("examTableBody");
 
-  classSelect.addEventListener("change", renderStudentTable);
-  dateInput.addEventListener("change", renderStudentTable);
+examData.forEach(exam => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${exam.subject}</td>
+    <td>${exam.date}</td>
+    <td>${exam.time}</td>
+    <td>${exam.room}</td>
+    
+  `;
+  tbody.appendChild(row);
+});
+ 
+document.getElementById("guidelineBtn").addEventListener("click", () => {
+  document.getElementById("guidelineModal").style.display = "block";
 });
 
-function renderStudentTable() {
-  const selectedClass = document.getElementById("classSelect").value;
-  const selectedDate = document.getElementById("dateInput").value;
+document.querySelector(".close-btn").addEventListener("click", () => {
+  document.getElementById("guidelineModal").style.display = "none";
+});
 
-  if (selectedClass && selectedDate) {
-    const students = studentData[selectedClass] || [];
-    const tbody = document.getElementById("studentTableBody");
-    tbody.innerHTML = "";
-
-    students.forEach((student, index) => {
-      const row = document.createElement("tr");
-
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${student}</td>
-        <td>
-          <label>
-            <input type="radio" name="status${index}" value="Present" required> Present
-          </label>
-          <label style="margin-left: 15px;">
-            <input type="radio" name="status${index}" value="Absent"> Absent
-          </label>
-        </td>
-      `;
-
-      tbody.appendChild(row);
-    });
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("guidelineModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
   }
-}
-
-function submitAttendance() {
-  const selectedClass = document.getElementById("classSelect").value;
-  const selectedDate = document.getElementById("dateInput").value;
-
-  if (!selectedClass || !selectedDate) {
-    alert("Please select both class and date first.");
-    return;
-  }
-
-  const students = studentData[selectedClass] || [];
-  const attendance = [];
-
-  students.forEach((student, index) => {
-    const statusInput = document.querySelector(`input[name="status${index}"]:checked`);
-    const status = statusInput ? statusInput.value : "Not Marked";
-    attendance.push({ name: student, status });
-  });
-
-  console.log("Class:", selectedClass);
-  console.log("Date:", selectedDate);
-  console.log("Attendance Data:", attendance);
-  alert("Attendance saved successfully!");
-}
-
-function downloadReport() {
-  const selectedClass = document.getElementById("classSelect").value;
-  const selectedDate = document.getElementById("dateInput").value;
-  const students = studentData[selectedClass] || [];
-
-  if (!selectedClass || !selectedDate) {
-    alert("Please select both class and date first.");
-    return;
-  }
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  doc.setFontSize(16);
-  doc.text("Attendance Report", 14, 20);
-
-  doc.setFontSize(12);
-  doc.text(`Class: ${selectedClass}`, 14, 30);
-  doc.text(`Date: ${selectedDate}`, 14, 38);
-
-  const tableRows = students.map((student, index) => {
-    const statusInput = document.querySelector(`input[name="status${index}"]:checked`);
-    const status = statusInput ? statusInput.value : "Not Marked";
-    return [index + 1, student, status];
-  });
-
-  doc.autoTable({
-    startY: 45,
-    head: [["#", "Student Name", "Status"]],
-    body: tableRows,
-    styles: { halign: 'left' },
-    headStyles: { fillColor: [46, 125, 50] },
-  });
-
-  const filename = `Attendance-${selectedClass.replace(/\s+/g, "_")}-${selectedDate}.pdf`;
-  doc.save(filename);
-}
+});

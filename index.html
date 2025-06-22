@@ -1,8 +1,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title> Attendance </title>
-    <meta name="description" content="  " />
+    <title> Exam Schedule </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -21,53 +21,71 @@
          <li> 📚 Subject </li>
          <li> 📂 Subject Material </li>
          <li> ❓ Question </li>
-         <li> 📝  Exam </li>
+         <li class="active">📝  Exam </li>
          <li> 🗓️ Event </li>
-         <li class="active">📋 Attendance </li>
+         <li> 📋 Attendance </li>
          <li> 🎫 Ticketing support </li>
         </ul>
       </div>
       <div class="main-content">
-    <h2>Student Attendance</h2>
-
-    <div class="info-selection">
-      <div class="info-box">
-        <label for="classSelect">Class:</label>
-        <select id="classSelect">
-          <option value="" disabled selected>Select Class</option>
-          <option value="Grade 1 - A">Grade 1 - A</option>
-          <option value="Grade 2 - B">Grade 2 - B</option>
-          <option value="Grade 3 - C">Grade 3 - C</option>
-        </select>
-      </div>
-
-      <div class="info-box">
-        <label for="dateInput">Date:</label>
-        <input type="date" id="dateInput">
-      </div>
-    </div>
-
-    <table class="student-table">
+       <section class="exam-schedule">
+    <h2 class="section-title">Exam Schedule</h2>
+    <table>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Student Name</th>
-          <th>Status</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Room</th>
         </tr>
       </thead>
-      <tbody id="studentTableBody">
+      <tbody id="examTableBody">
       </tbody>
     </table>
+  </section>
+  <section class="guidelines-section">
+  <button id="guidelineBtn">📘 View Guidelines</button>
 
-    <div class="submit-btn">
-      <button onclick="submitAttendance()">Save Attendance</button>
-      <button onclick="downloadReport()">Download Attendance Report</button>
+  <div id="guidelineModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>General Instructions</h3>
+      <p>
+  <strong>📚 Attendance & Discipline:</strong><br>
+  - Students must attend all scheduled classes on time.<br>
+  - Late arrivals may be marked as absent unless justified.<br>
+  - Attendance will directly impact academic performance.<br><br>
+
+  <strong>📝 Assignments & Study:</strong><br>
+  - Homework must be submitted before the deadline.<br>
+  - Students are encouraged to review lessons daily.<br>
+  - Group study is allowed but plagiarism is not tolerated.<br><br>
+
+  <strong>📅 Exams:</strong><br>
+  - All students must be present during exam days.<br>
+  - Bring necessary materials (pens, calculators, etc.).<br>
+  - Cheating will result in disciplinary action.<br><br>
+
+  <strong>💻 Online System Usage:</strong><br>
+  - Use your school account to log in to the system.<br>
+  - Do not share your password with others.<br>
+  - If you find any issue, report it to the IT supervisor.<br><br>
+
+  <strong>🤝 Behavior & Respect:</strong><br>
+  - Respect your teachers, classmates, and school property.<br>
+  - Any form of bullying or discrimination is strictly prohibited.<br>
+  - Dress code must be followed at all times.<br><br>
+
+  <strong>📞 Communication & Support:</strong><br>
+  - For academic help, contact your subject teacher.<br>
+  - For schedule or system issues, contact the school office.<br>
+  - Parents can contact administration for urgent matters.
+</p>
+
     </div>
   </div>
-</div>
- </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-<script src="script.js"></script>
-</body>
+</section>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
