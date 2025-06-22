@@ -1,10 +1,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Attendance</title>
+    <title> Attendance </title>
     <meta name="description" content="  " />
-    <style></style>
-    <script></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -30,44 +28,46 @@
         </ul>
       </div>
       <div class="main-content">
-        <section class="attendance-report">
-    <h2>Student Attendance Reports</h2>
-    <div class="filters">
-      <label for="classSelect">Class:</label>
-      <select id="classSelect">
-        <option value="all">All</option>
-        <option value="Grade 1 - A">Grade 1 - A</option>
+    <h2>Student Attendance</h2>
+
+    <div class="info-selection">
+      <div class="info-box">
+        <label for="classSelect">Class:</label>
+        <select id="classSelect">
+          <option value="" disabled selected>Select Class</option>
+          <option value="Grade 1 - A">Grade 1 - A</option>
           <option value="Grade 2 - B">Grade 2 - B</option>
           <option value="Grade 3 - C">Grade 3 - C</option>
-      </select>
+        </select>
+      </div>
 
-      <label for="dateSelect">Date:</label>
-      <input type="date" id="dateSelect">
-
-      <button id="filterBtn">Filter</button>
+      <div class="info-box">
+        <label for="dateInput">Date:</label>
+        <input type="date" id="dateInput">
+      </div>
     </div>
 
-    <table id="attendanceTable">
+    <table class="student-table">
       <thead>
         <tr>
+          <th>#</th>
           <th>Student Name</th>
           <th>Status</th>
-          <th>Date</th>
-          <th>Class</th>
-          <th>Teacher</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="studentTableBody">
       </tbody>
     </table>
 
-    <button id="downloadBtn">Download Report as PDF</button>
-  </section>
-      </div>
-      
+    <div class="submit-btn">
+      <button onclick="submitAttendance()">Save Attendance</button>
+      <button onclick="downloadReport()">Download Attendance Report</button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </div>
+</div>
+ </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script src="script.js"></script>
-  </body>
+</body>
 </html>
